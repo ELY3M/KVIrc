@@ -79,6 +79,7 @@ namespace KviKvsCoreSimpleCommands
 		_REGCMD("halfop", halfop)
 		_REGCMD("halt", halt)
 		_REGCMD("help", help)
+		_REGCMD("dns", host)		
 		_REGCMD("host", host)
 		_REGCMD("include", parse)
 		_REGCMD("info", rfc2812wrapper)
