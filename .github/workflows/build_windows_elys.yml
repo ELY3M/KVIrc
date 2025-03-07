@@ -7,9 +7,9 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build-windows:
+  build:
     runs-on: windows-latest
-    # https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md
+    ##https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md
 
     steps:
       - name: Checkout
