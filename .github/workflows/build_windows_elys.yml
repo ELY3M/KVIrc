@@ -2,14 +2,20 @@ name: Build Windows-elys
 
 on:
   push:
-    branches: [ "master" ]
+    branches:
+      - master
+    paths-ignore:
+      - '**.md'
+    tags:
+      - '*'
   pull_request:
-    branches: [ "master" ]
+    paths-ignore:
+      - '**.md'
 
 jobs:
-  build:
+  build-windows:
     runs-on: windows-latest
-    ##https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md
+    # https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md
 
     steps:
       - name: Checkout
