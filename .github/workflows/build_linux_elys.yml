@@ -47,3 +47,9 @@ jobs:
           cd '${{github.workspace}}'
           cd build
           cmake --build .
+
+      - name: Build
+        run: |
+          cd '${{github.workspace}}'
+          ls -la 
+          

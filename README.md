@@ -1,8 +1,13 @@
 # ![KVIrc-Midnight](https://github.com/kvirc/KVIrc/wiki/images/KVIrc-midnight.png) KVIrc
 
+[![Linux build](https://github.com/ELY3M/KVIrc/actions/workflows/build_linux_elys.yml/badge.svg)](https://github.com/kvirc/KVIrc/actions/workflows/build_linux_elys.yml)
+[![Windows build](https://github.com/ELY3M/KVIrc/actions/workflows/build_windows_elys.yml/badge.svg)](https://github.com/kvirc/KVIrc/actions/workflows/build_windows_elys.yml)
+
+<!--
 [![Linux build](https://github.com/ELY3M/KVIrc/actions/workflows/build_linux_qt6.yml/badge.svg)](https://github.com/kvirc/KVIrc/actions/workflows/build_linux_qt6.yml)
 [![macOS build](https://github.com/ELY3M/KVIrc/actions/workflows/build_macos.yml/badge.svg)](https://github.com/kvirc/KVIrc/actions/workflows/build_macos.yml)
 [![Windows build](https://github.com/ELY3M/KVIrc/actions/workflows/build_windows.yml/badge.svg)](https://github.com/kvirc/KVIrc/actions/workflows/build_windows.yml)
+-->
 <!--
 [![Coverity Scan Build Status](https://scan.coverity.com/projects/6841/badge.svg)](https://scan.coverity.com/projects/kvirc-coverity)
 -->
