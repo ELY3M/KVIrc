@@ -1,4 +1,4 @@
-name: Build Windows
+name: Build Windows-elys
 
 on:
   push:
@@ -172,8 +172,33 @@ jobs:
           c:\"Program Files (x86)"\NSIS\makensis.exe KVIrc.nsi
           move KVIrc.exe ${{ env.exe_name }}.exe
 
+     
+    - name: Create Release
+      uses: actions/create-release@latest
+      env:
+        GITHUB_TOKEN: ${{ github.token }} 
+      with:
+        draft: false
+        prerelease: false
+        release_name: ${{ steps.version.outputs.version }}
+        tag_name: ${{ github.run_number }}
+        body: ${{ github.event.head_commit.message }}
+        
+    - name: Upload Release
+      uses: softprops/action-gh-release@v2
+      with:
+        draft: false
+        prerelease: false    
+        tag_name: ${{ github.run_number }}
+        body: ${{ github.event.head_commit.message }}
+        files: build/${{ env.exe_name }}.exe
+      env:
+        GITHUB_TOKEN: ${{ github.token }}        
+              
+        
       - name: Publish artifact
         uses: actions/upload-artifact@v4
         with:
           name: ${{ env.exe_name }}.exe
           path: build/${{ env.exe_name }}.exe
+          
