@@ -1,16 +1,21 @@
 # ![KVIrc-Midnight](https://github.com/kvirc/KVIrc/wiki/images/KVIrc-midnight.png) KVIrc
 
-[![Linux build](https://github.com/kvirc/KVIrc/actions/workflows/build_linux_qt6.yml/badge.svg)](https://github.com/kvirc/KVIrc/actions/workflows/build_linux_qt6.yml)
-[![macOS build](https://github.com/kvirc/KVIrc/actions/workflows/build_macos.yml/badge.svg)](https://github.com/kvirc/KVIrc/actions/workflows/build_macos.yml)
-[![Windows build](https://github.com/kvirc/KVIrc/actions/workflows/build_windows.yml/badge.svg)](https://github.com/kvirc/KVIrc/actions/workflows/build_windows.yml)
+[![Linux build](https://github.com/ELY3M/KVIrc/actions/workflows/build_linux_qt6.yml/badge.svg)](https://github.com/kvirc/KVIrc/actions/workflows/build_linux_qt6.yml)
+[![macOS build](https://github.com/ELY3M/KVIrc/actions/workflows/build_macos.yml/badge.svg)](https://github.com/kvirc/KVIrc/actions/workflows/build_macos.yml)
+[![Windows build](https://github.com/ELY3M/KVIrc/actions/workflows/build_windows.yml/badge.svg)](https://github.com/kvirc/KVIrc/actions/workflows/build_windows.yml)
+<!--
 [![Coverity Scan Build Status](https://scan.coverity.com/projects/6841/badge.svg)](https://scan.coverity.com/projects/kvirc-coverity)
-
+-->
 <!--![KVIrc logo](../master/data/icons/128x128/kvirc.png "KVIrc - The visual IRC client for the masses!") -->
 
 Welcome to the development and bug tracker for the KVIrc project.
 
 KVIrc is a free and portable IRC client leveraging the Qt GUI toolkit.
 KVIrc is written by Szymon Stefanek and the KVIrc development team, with [contributions](https://github.com/kvirc/KVIrc/graphs/contributors) and support of many IRC addicted developers around the world.
+
+## Elys Changes 
+* /dns command added     
+
 
 ## Getting Involved
 
