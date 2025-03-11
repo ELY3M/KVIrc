@@ -44,7 +44,7 @@ set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules)
 
 # Some vars
 set(PACKAGE "kvirc")
-set(NICENAME "KVIrc")
+set(NICENAME "KVIrc-modded-by-ELY")
 set(VERSION_MAJOR "5")
 set(VERSION_BRANCH "5.2")
 set(VERSION_RELEASE "5.2.6")
