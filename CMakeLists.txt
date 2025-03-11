@@ -44,10 +44,10 @@ set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules)
 
 # Some vars
 set(PACKAGE "kvirc")
-set(NICENAME "KVIrc-modded-by-ELY")
+set(NICENAME "KVIrc")
 set(VERSION_MAJOR "5")
 set(VERSION_BRANCH "5.2")
-set(VERSION_RELEASE "5.2.6")
+set(VERSION_RELEASE "5.2.6-modded-by-ELY-M.")
 set(VERSION_CODENAME "Quasar")
 
 string(REGEX MATCH "[0-9]+$" VERSION_MINOR ${VERSION_BRANCH})
