@@ -35,7 +35,7 @@ subdirs(
 	lamerizer language links list log logview
 	mask math mediaplayer mircimport my
 	notifier
-	objects options
+	objects options ownstyle
 	package perlcore popup popupeditor proxydb pythoncore
 	raweditor regchan reguser rijndael rot13
 	serverdb setup sharedfile sharedfileswindow snd socketspy spaste str system
