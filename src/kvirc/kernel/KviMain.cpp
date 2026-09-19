@@ -384,7 +384,7 @@ int main(int argc, char ** argv)
 
     //I want to do this as plugin!!!!!   
 	QString styleSheet = "* { color: black; background-color: #959CBF; } QTextEdit { background: #E2E2E2; } QLineEdit { background: #E2E2E2; } QListView { background: #E2E2E2; } QListWidget { background: #E2E2E2; } QMessageBox { background: #E2E2E2; } QSpinBox { background: #E2E2E2; } QTreeView { background: #E2E2E2; } QCheckBox { background: #E2E2E2; }";
-	pTheApp.setStyleSheet(styleSheet);
+	pTheApp->setStyleSheet(styleSheet);
 		
 
 	QString szRemoteCommand = a.szExecCommand;
