@@ -1250,7 +1250,7 @@ public:
 	* \param bAutoDelete The state of autoDelete()
 	* \return KviPointerList<T>
 	*/
-	KviPointerList(bool bAutoDelete = true)
+	KviPointerList<T>(bool bAutoDelete = true)
 	{
 		m_bAutoDelete = bAutoDelete;
 		m_pHead = nullptr;
@@ -1264,7 +1264,7 @@ public:
 	*
 	* If autoDelete() is set to true, all the items are deleted
 	*/
-	virtual ~KviPointerList()
+	virtual ~KviPointerList<T>()
 	{
 		clear();
 	};

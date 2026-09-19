@@ -392,9 +392,6 @@ bool KviSSL::initContext(Method m)
 #ifdef SSL_OP_SINGLE_ECDH_USE
 		|SSL_OP_SINGLE_ECDH_USE
 #endif
-#ifdef SSL_OP_IGNORE_UNEXPECTED_EOF
-		|SSL_OP_IGNORE_UNEXPECTED_EOF
-#endif
 	);
 	// we want all ciphers to be available here, except insecure ones, orderer by strength;
 	SSL_CTX_set_cipher_list(m_pSSLCtx, "ALL:!eNULL:!LOW:!EXP:!SSLv2:!SSLv3:!TLSv1:@STRENGTH");
@@ -539,15 +536,7 @@ KviSSL::Result KviSSL::connect()
 {
 	if(!m_pSSL)
 		return NotInitialized;
-#if !(defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW))
-		// ignore SIGPIPE
-		signal(SIGPIPE, SIG_IGN);
-		int ret = SSL_connect(m_pSSL);
-		//restore normal SIGPIPE behaviour.
-		signal(SIGPIPE, SIG_DFL);
-#else
 	int ret = SSL_connect(m_pSSL);
-#endif
 	return connectOrAcceptError(ret);
 }
 
@@ -953,23 +942,12 @@ void KviSSLCertificate::extractSignature()
 
 	m_szSignatureContents = "";
 
-#if OPENSSL_VERSION_NUMBER >= 0x10100005L
-	int length = ASN1_STRING_length(sig);
-#else
-	int length = sig->length;
-#endif
-	for(i = 0; i < length; i++)
+	for(i = 0; i < sig->length; i++)
 	{
 		if(m_szSignatureContents.hasData())
 			m_szSignatureContents.append(":");
-#if OPENSSL_VERSION_NUMBER >= 0x10100005L
-		const unsigned char *data = ASN1_STRING_get0_data(sig);
-		m_szSignatureContents.append(hexdigits[(data[i] & 0xf0) >> 4]);
-		m_szSignatureContents.append(hexdigits[(data[i] & 0x0f)]);
-#else
 		m_szSignatureContents.append(hexdigits[(sig->data[i] & 0xf0) >> 4]);
 		m_szSignatureContents.append(hexdigits[(sig->data[i] & 0x0f)]);
-#endif
 	}
 }
 

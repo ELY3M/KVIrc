@@ -97,7 +97,7 @@ OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
 	grid->addWidget(addLabel(gbox, __tr2qs_ctx("<b>Note:</b> You must restart KVIrc to apply any language changes", "options")), 1, 0, 1, 2);
 
 	m_pForcedLocaleCombo->addItem(__tr2qs_ctx("Automatic detection", "options"));
-	m_pForcedLocaleCombo->addItem("en");
+	m_pForcedLocaleCombo->addItem(__tr2qs_ctx("en", "options"));
 
 	QString szLangFile;
 	g_pApp->getLocalKvircDirectory(szLangFile, KviApplication::None, KVI_FORCE_LOCALE_FILE_NAME);
@@ -133,7 +133,7 @@ OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
 	else
 		m_pForcedLocaleCombo->setCurrentIndex(iMatch);
 
-#if defined(COMPILE_ENCHANT_SUPPORT) || defined(COMPILE_WINSPELLCHECKER_SUPPORT)
+#ifdef COMPILE_ENCHANT_SUPPORT
 	{
 		gbox = addGroupBox(0, 2, 0, 2, Qt::Horizontal, __tr2qs_ctx("Spell Checker Dictionaries", "options"));
 
@@ -226,7 +226,7 @@ void OptionsWidget_textEncoding::commit()
 		}
 	}
 
-#if defined(COMPILE_ENCHANT_SUPPORT) || defined(COMPILE_WINSPELLCHECKER_SUPPORT)
+#ifdef COMPILE_ENCHANT_SUPPORT
 	QStringList wantedDictionaries;
 	for(int i = 0; i < m_pSpellCheckerDictionaries->rowCount(); ++i)
 	{

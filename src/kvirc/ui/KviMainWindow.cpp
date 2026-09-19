@@ -142,9 +142,7 @@ KviMainWindow::KviMainWindow(QWidget * pParent)
 
 	createWindowList();
 
-	if(!g_pMainWindow->screen()->availableVirtualGeometry().contains(KVI_OPTION_RECT(KviOption_rectFrameGeometry)) ||
-		KVI_OPTION_RECT(KviOption_rectFrameGeometry).width() < 100 ||
-		KVI_OPTION_RECT(KviOption_rectFrameGeometry).height() < 100)
+	if((KVI_OPTION_RECT(KviOption_rectFrameGeometry).width() < 100) || (KVI_OPTION_RECT(KviOption_rectFrameGeometry).height() < 100) || (KVI_OPTION_RECT(KviOption_rectFrameGeometry).x() > g_pMainWindow->screen()->availableSize().width()) || (KVI_OPTION_RECT(KviOption_rectFrameGeometry).y() > g_pMainWindow->screen()->availableSize().height()))
 	{
 		// Try to find some reasonable defaults
 		// prefer primary screen for first startup

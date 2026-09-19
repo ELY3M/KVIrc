@@ -68,18 +68,11 @@ namespace KviSASL
 		return false;
 	}
 
-	bool externalMethod(const KviCString & szIn, KviCString & szOut, const QByteArray & baNick)
+	bool externalMethod(const KviCString & szIn, KviCString & szOut)
 	{
 		if(szIn == "+")
 		{
-			if(baNick.isEmpty())
-			{
-				szOut = szIn;
-			}
-			else
-			{
-				szOut.bufferToBase64(baNick.data(), baNick.size());
-			}
+			szOut = szIn;
 
 			return true;
 		}

@@ -92,9 +92,7 @@ private slots:
 	void toggleParentFrame();
 	void doAway(bool);
 	void flashingTimerShot();
-#ifdef COMPILE_KDE_SUPPORT
-	void activatedSlot(bool active);
-# else
+#ifndef COMPILE_KDE_SUPPORT
 	void activatedSlot(QSystemTrayIcon::ActivationReason reason);
 #endif
 	void executeInternalCommand(bool);

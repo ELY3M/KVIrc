@@ -372,20 +372,12 @@ int main(int argc, char ** argv)
 	qputenv("QT_BEARER_POLL_TIMEOUT", QByteArray::number(-1));
 #endif
 
-	// Restore Qt5-like rounding to fix HiDPI support on QWebEngine
-	QGuiApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::Round);
-
 	KviApplication * pTheApp = new KviApplication(argc, argv);
 
 #ifdef COMPILE_KDE_SUPPORT
 	KAboutData::setApplicationData(*pAboutData);
 	delete pAboutData;
 #endif
-
-    //I want to do this as plugin!!!!!   
-	QString styleSheet = "* { color: black; background-color: #959CBF; } QTextEdit { background: #E2E2E2; } QLineEdit { background: #E2E2E2; } QListView { background: #E2E2E2; } QListWidget { background: #E2E2E2; } QMessageBox { background: #E2E2E2; } QSpinBox { background: #E2E2E2; } QTreeView { background: #E2E2E2; } QCheckBox { background: #E2E2E2; }";
-	pTheApp->setStyleSheet(styleSheet);
-		
 
 	QString szRemoteCommand = a.szExecCommand;
 	if(!a.szExecRemoteCommand.isEmpty())

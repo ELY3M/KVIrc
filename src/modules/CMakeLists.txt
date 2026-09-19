@@ -52,6 +52,6 @@ if(COMPILE_PYTHON_SUPPORT)
 	subdirs(python)
 endif()
 
-if(COMPILE_ENCHANT_SUPPORT OR COMPILE_WINSPELLCHECKER_SUPPORT)
+if(COMPILE_ENCHANT_SUPPORT)
 	subdirs(spellchecker)
 endif()

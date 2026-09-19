@@ -1451,12 +1451,12 @@ void KviIrcSocket::linkUp()
 void KviIrcSocket::readData(int)
 {
 	//read data
-	char cBuffer[16385];
+	char cBuffer[1025];
 	int iReadLength;
 #ifdef COMPILE_SSL_SUPPORT
 	if(m_pSSL)
 	{
-		iReadLength = m_pSSL->read(cBuffer, sizeof(cBuffer) - 1);
+		iReadLength = m_pSSL->read(cBuffer, 1024);
 		if(iReadLength <= 0)
 		{
 			// ssl error....?
@@ -1501,7 +1501,7 @@ void KviIrcSocket::readData(int)
 	else
 	{
 #endif
-		iReadLength = kvi_socket_recv(m_sock, cBuffer, sizeof(cBuffer) - 1);
+		iReadLength = kvi_socket_recv(m_sock, cBuffer, 1024);
 		if(iReadLength <= 0)
 		{
 			handleInvalidSocketRead(iReadLength);

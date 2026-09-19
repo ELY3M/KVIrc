@@ -851,12 +851,6 @@ protected:
 	void endInitialCapNegotiation();
 
 	/**
-	* \brief Called when CAP NEW is received
-	* \return void
-	*/
-	void handleCapNew(const QString & szCapList);
-
-	/**
 	* \brief Called to update the away state
 	* \param bAway Whether we enter the away mode
 	* \return void

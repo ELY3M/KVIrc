@@ -35,7 +35,6 @@
 #include "KviKvsScript.h"
 
 #include <QPainter>
-#include <QPalette>
 #include <QMenu>
 
 static KviPointerList<HttpFileTransfer> * g_pHttpFileTransfers = nullptr;
@@ -115,7 +114,6 @@ void HttpFileTransfer::displayPaint(QPainter * p, int column, QRect rect)
 	int width = rect.width(), height = rect.height();
 	QString txt;
 	bool bIsTerminated = ((m_eGeneralStatus == Success) || (m_eGeneralStatus == Failure));
-	auto palette = QApplication::palette();
 
 	switch(column)
 	{
@@ -155,7 +153,7 @@ void HttpFileTransfer::displayPaint(QPainter * p, int column, QRect rect)
 				daW1 = daW2;
 			int iLineSpacing = fm.lineSpacing();
 
-			p->setPen(palette.color(QPalette::Active, QPalette::Text));
+			p->setPen(Qt::black);
 
 			int iY = rect.top() + 4;
 
@@ -167,8 +165,7 @@ void HttpFileTransfer::displayPaint(QPainter * p, int column, QRect rect)
 			}
 			iY += iLineSpacing;
 
-			// lighter color, usually dark grey
-			p->setPen(palette.color(QPalette::Disabled, QPalette::Text));
+			p->setPen(Qt::darkGray);
 
 			p->drawText(rect.left() + 4, rect.top() + 4, width - 8, height - 8, Qt::AlignTop | Qt::AlignLeft, szFrom);
 			p->drawText(rect.left() + 4, rect.top() + 4 + iLineSpacing, width - 8, height - 8, Qt::AlignTop | Qt::AlignLeft, szTo);
@@ -227,7 +224,7 @@ void HttpFileTransfer::displayPaint(QPainter * p, int column, QRect rect)
 				txt = KviQString::makeSizeReadable(m_pHttpRequest->receivedSize());
 			}
 
-			p->setPen(palette.color(QPalette::Active, QPalette::Text));
+			p->setPen(Qt::black);
 
 			p->drawText(rect.left() + 4, rect.top() + 19, width - 8, height - 8, Qt::AlignTop | Qt::AlignLeft, txt);
 

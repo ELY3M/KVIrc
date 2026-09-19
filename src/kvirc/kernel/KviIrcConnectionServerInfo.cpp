@@ -83,21 +83,6 @@ void KviIrcConnectionServerInfo::addSupportedCaps(const QString & szCapList)
 	}
 }
 
-void KviIrcConnectionServerInfo::removeSupportedCaps(const QString & szCapList)
-{
-	QStringList lTmp = szCapList.split(' ', Qt::SkipEmptyParts);
-	foreach(QString szCap, lTmp)
-	{
-		if(szCap.length() < 1)
-			continue; // shouldn't happen
-
-		szCap = szCap.toLower();
-
-		if(m_lSupportedCaps.contains(szCap))
-			m_lSupportedCaps.removeAll(szCap);
-	}
-}
-
 void KviIrcConnectionServerInfo::setSupportedChannelModes(const QString & szSupportedChannelModes)
 {
 	QStringList szAllModes = szSupportedChannelModes.split(',', Qt::KeepEmptyParts);
@@ -508,23 +493,6 @@ const QString & KviIrcdSevenIrcServerInfo::getUserModeDescription(QChar mode) co
 			break;
 	}
 	return KviCharybdisServerInfo::getUserModeDescription(mode);
-}
-
-const QString & KviIrcdSolanumIrcServerInfo::getUserModeDescription(QChar mode) const
-{
-	switch(mode.unicode())
-	{
-		case 'I':
-			return __tr2qs("I: Idle time hidden");
-			break;
-		case 'M':
-			return __tr2qs("M: Bypass g mode (oper only)");
-			break;
-		case 'u':
-			return __tr2qs("u: Receive filtered messages");
-			break;
-	}
-	return KviIrcdSevenIrcServerInfo::getUserModeDescription(mode);
 }
 
 const QString & KviPlexusIrcServerInfo::getUserModeDescription(QChar mode) const
@@ -1707,7 +1675,7 @@ const QString & KviCharybdisServerInfo::getChannelModeDescription(char mode) con
 			return __tr2qs("Block forwarded users");
 			break;
 		case 'R':
-			return __tr2qs("Block messages from unregistered users");
+			return __tr2qs("Only registered nicks can join");
 			break;
 		case 'S':
 			return __tr2qs("SSL Only");
@@ -1734,10 +1702,7 @@ const QString & KviCharybdisServerInfo::getChannelModeDescription(char mode) con
 			return __tr2qs("Quiet");
 			break;
 		case 'r':
-			return __tr2qs("Only registered nicks can join");
-			break;
-		case 'u':
-			return __tr2qs("Unfiltered");
+			return __tr2qs("Need auth to join channel");
 			break;
 		case 'z':
 			return __tr2qs("Reduced moderation for ops");

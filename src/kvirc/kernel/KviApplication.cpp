@@ -227,6 +227,9 @@ KviApplication::KviApplication(int & argc, char ** argv)
 	kvi_socket_flushTrafficCounters();
 	// don't let qt quit the application by itself
 	setQuitOnLastWindowClosed(false);
+
+	// Restore Qt5-like rounding to fix HiDPI support on QWebEngine
+	QGuiApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::Round);
 }
 
 void KviApplication::setup()
@@ -789,8 +792,7 @@ void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QStrin
 		actions << __tr2qs("Ignore");
 
 		pNotify->setActions(actions);
-		pNotify->setFlags(KNotification::CloseWhenWidgetActivated |
-			(uMessageLifetime == 0 ? KNotification::Persistent : KNotification::CloseOnTimeout));
+		pNotify->setFlags(KNotification::CloseWhenWidgetActivated|KNotification::Persistent);
 		pNotify->setWidget(g_pMainWindow);
 
 		connect(pNotify, SIGNAL(activated()), this, SLOT(showParentFrame()));
@@ -828,8 +830,7 @@ void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QStrin
 		action = pNotify->addAction(__tr2qs("Ignore"));
 		connect(action, SIGNAL(activated()), pNotify, SLOT(close()));
 
-		pNotify->setFlags(KNotification::CloseWhenWindowActivated |
-			(uMessageLifetime == 0 ? KNotification::Persistent : KNotification::CloseOnTimeout));
+		pNotify->setFlags(KNotification::CloseWhenWindowActivated|KNotification::Persistent);
 		pNotify->setWindow(g_pMainWindow->windowHandle());
 #endif // QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 
@@ -849,7 +850,7 @@ void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QStrin
 			// org.freedesktop.Notifications.Notify
 			QVariantList args;
 			args << QString("KVIrc");                          // application name
-			args << QVariant(0u);                              // notification id
+			args << QVariant(0);                               // notification id
 			args << szIcon;                                    // application icon
 			args << szTitle;                                   // summary text
 			args << szText;                                    // detailed text
