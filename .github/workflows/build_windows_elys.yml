@@ -131,30 +131,23 @@ jobs:
           makensis.exe KVIrc.nsi
           move KVIrc.exe ${{ env.exe_name }}.exe
 
-     
-      - name: Create Release
-        uses: actions/create-release@latest
-        env:
-          GITHUB_TOKEN: ${{ github.token }} 
+      - name: Get current time
+        id: now
+        uses: josStorer/get-current-time@v2
         with:
-          draft: false
-          prerelease: false
-          release_name: ${{ steps.version.outputs.version }}
-          tag_name: ${{ github.run_number }}
-          body: ${{ github.event.head_commit.message }}
-        
+          timezone: "America/Chicago"
+          format: M-D-YY-hh.mm.ss.A     
+
       - name: Upload Release
         uses: softprops/action-gh-release@v2
         with:
           draft: false
           prerelease: false    
-          tag_name: ${{ github.run_number }}
+          tag_name: ${{ steps.now.outputs.formattedTime }}
           body: ${{ github.event.head_commit.message }}
           files: build/${{ env.exe_name }}.exe
-        env:
-          GITHUB_TOKEN: ${{ github.token }}        
-              
-        
+          name: "Release ${{ steps.now.outputs.formattedTime }}"
+                    
       - name: Publish artifact
         uses: actions/upload-artifact@v4
         with:
